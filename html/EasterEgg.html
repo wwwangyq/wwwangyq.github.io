@@ -162,7 +162,7 @@
     c2.width = c3.width = window.innerWidth;
     c2.height = c3.height = window.innerHeight;
     ctx1.fillStyle = '#000';
-    const text = '李雨佳,生日快乐！'
+    const text = '李雨佳，生日快乐！';
     let textWidth = 99999999;
 
     while (textWidth > window.innerWidth) {
@@ -171,9 +171,12 @@
     }
 
     c1.width = textWidth;
-    c1.height = fontSize * 1.5;
+     c1.height = fontSize * 10;
     ctx1.font = `900 ${fontSize}px Arial`;
-    ctx1.fillText(text, 0, fontSize);
+    ctx1.fillStyle = "white";
+    text.split('\n').forEach((line, index) => {
+      ctx1.fillText(line, 0, fontSize * (index + 1.2));
+    });
     const imgData = ctx1.getImageData(0, 0, c1.width, c1.height);
     for (let i = 0, max = imgData.data.length; i < max; i += 4) {
       const alpha = imgData.data[i + 3];
